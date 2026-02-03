@@ -2,17 +2,14 @@ import sys
 import time
 import numpy as np
 
-# ==========================================
 # 1. SETUP
-# ==========================================
+
 N = 1000000  
 
 # Increase recursion depth to prevent crashes in QuickSort/MergeSort
 sys.setrecursionlimit(2000000)
 
-# ==========================================
 # 2. ALGORITHMS
-# ==========================================
 
 def quick_sort(arr):
     # Base case
@@ -75,13 +72,12 @@ def heap_sort(arr):
         heapify(arr, i, 0)
     return arr
 
-# ==========================================
+
 # 3. MAIN EXECUTION
-# ==========================================
 
-print(f"Generating {N:,} elements (Range: -1B to 1B)...")
 
-# Generate data with large range (-1 Billion to +1 Billion)
+print(f"Generating {N:,} elements.")
+
 data = {
     '1.Float_Asc': np.sort(np.random.uniform(-1e9, 1e9, N)),
     '2.Float_Desc': np.sort(np.random.uniform(-1e9, 1e9, N))[::-1],
@@ -135,4 +131,5 @@ for name, arr in data.items():
 
 csv_file.close()
 print("-" * 50)
+
 print(f"Done! Results saved to '{csv_filename}'")
